@@ -4,10 +4,12 @@ import "../Styles/Stats.css";
 export default function Stats(props) {
   return (
     <div className="stats">
-      Currently power: {props.upgrade}
+      Current click power: {props.upgrade}
+      <br />
+      Score per second: {props.upgradePerSecond}
+      <br />
       <br />
       Score: {props.counter}
-      <br />
     </div>
   );
 }
