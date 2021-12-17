@@ -30,7 +30,7 @@ export default function App() {
     }
   };
 
-  //Handles upgrading score increment per second
+  //Handles upgrading score per second
   const handleUpgradePerSecond = () => {
     if (counter >= costPerSecond) {
       if (upgradePerSecond === 0) {
@@ -55,7 +55,7 @@ export default function App() {
     }, 1000);
 
     return () => clearInterval(intervalId);
-  }, []);
+  }, [upgradePerSecond]);
 
   return (
     <div className="App">
