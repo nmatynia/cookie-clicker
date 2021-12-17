@@ -6,11 +6,13 @@ export default function Upgrades(props) {
 
   return (
     <div className="upgrades">
-      <button onClick={props.onClick}>Upgrade ({props.cost})</button>
+      <div className="buttons">
+        <button onClick={props.onClick}>Upgrade ({props.cost})</button>
 
-      <button onClick={props.onUpgradePerSecond}>
-        {action} score (+{props.workerPerSecond}/s)({props.costPerSecond})
-      </button>
+        <button onClick={props.onUpgradePerSecond}>
+          {action} score (+{props.workerPerSecond}/s)({props.costPerSecond})
+        </button>
+      </div>
     </div>
   );
 }
