@@ -1,6 +1,7 @@
 .App {
   text-align: center;
   display: grid;
+  padding: 20px;
   grid-template-columns: 1fr 1fr 1fr;
 }
 

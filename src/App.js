@@ -14,6 +14,7 @@ export default function App() {
   const [cost, setCost] = useState(10);
   const [costPerSecond, setCostPerSecond] = useState(50);
   const [upgradePerSecond, setUpgradePerSecond] = useState(0);
+  const [isCookieClicked, setIsCookieClicked] = useState(false);
 
   //Score handle function
   const handleClick = () => {
@@ -32,10 +33,20 @@ export default function App() {
   //Handles upgrading score increment per second
   const handleUpgradePerSecond = () => {
     if (counter >= costPerSecond) {
-      setCounter(counter - costPerSecond);
-      setUpgradePerSecond((prevUpgradePerSecond) => prevUpgradePerSecond * 2);
-      setCostPerSecond(Math.round(costPerSecond * 2));
+      if (upgradePerSecond === 0) {
+        setUpgradePerSecond(1);
+        setCounter(counter - costPerSecond);
+        setCostPerSecond(Math.round(costPerSecond * 2));
+      } else {
+        setCounter(counter - costPerSecond);
+        setUpgradePerSecond((prevUpgradePerSecond) => prevUpgradePerSecond * 2);
+        setCostPerSecond(Math.round(costPerSecond * 2));
+      }
     }
+  };
+
+  const handleMouseDown = () => {
+    setIsCookieClicked(true);
   };
 
   useEffect(() => {
@@ -55,7 +66,14 @@ export default function App() {
         workerPerSecond={upgradePerSecond}
         costPerSecond={costPerSecond}
       />
-      <Cookie onClick={handleClick} />
+      <Cookie
+        onClick={handleClick}
+        onMouseDown={handleMouseDown}
+        cookieClickedClassName={isCookieClicked ? "cookieClicked" : ""}
+        onAnimationEnd={() => {
+          setIsCookieClicked(false);
+        }}
+      />
       <Stats
         counter={counter}
         upgrade={upgrade}

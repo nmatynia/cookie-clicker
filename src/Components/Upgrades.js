@@ -10,7 +10,8 @@ export default function Upgrades(props) {
         <button onClick={props.onClick}>Upgrade ({props.cost})</button>
 
         <button onClick={props.onUpgradePerSecond}>
-          {action} score (+{props.workerPerSecond}/s)({props.costPerSecond})
+          {action} +{props.workerPerSecond} score per second (
+          {props.costPerSecond})
         </button>
       </div>
     </div>
